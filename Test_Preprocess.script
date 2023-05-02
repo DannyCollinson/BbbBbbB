@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#SBATCH --job-name=Test_Downsample_200x200
+
+#SBATCH --output=/home/dccollin/BbbBbbB/tprep.out
+#SBATCH --error=/home/dccollin/BbbBbbB/tprep.err
+
+#SBATCH -A CS156b
+
+#SBATCH -t 1:00:00
+
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=4G
+
+#SBATCH --mail-user=dccollin@caltech.edu
+#SBATCH --mail-type=BEGIN
+#SBATCH --mail-type=END
+#SBATCH --mail-type=FAIL
+
+
+source /home/dccollin/mambaforge/bin/activate
+mamba init -q
+source ~/.bashrc
+mamba activate cs156
+
+python3 /home/dccollin/BbbBbbB/Resize_Images.py

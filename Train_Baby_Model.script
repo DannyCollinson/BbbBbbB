@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#SBATCH --job-name=Train_Baby_Model
+
+#SBATCH --output=/home/dccollin/BbbBbbB/Baby_Model_Train.out
+#SBATCH --error=/home/dccollin/BbbBbbB/Baby_Model_Train.err
+
+#SBATCH -A CS156b
+
+#SBATCH -t 8:00:00
+
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=6
+#SBATCH --mem=8G
+
+#SBATCH --mail-user=dccollin@caltech.edu
+#SBATCH --mail-type=BEGIN
+#SBATCH --mail-type=END
+#SBATCH --mail-type=FAIL
+
+
+source /home/dccollin/mambaforge/bin/activate
+mamba init -q
+source ~/.bashrc
+mamba activate cs156
+
+python3 /home/dccollin/BbbBbbB/Baby_Model.py
