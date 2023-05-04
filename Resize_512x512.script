@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#SBATCH --job-name=Train_Baby_Model
+
+#SBATCH --output=/home/dccollin/BbbBbbB/output/Resize_512x512_2.out
+#SBATCH --error=/home/dccollin/BbbBbbB/output/Resize_512x512_2.err
+
+#SBATCH -A CS156b
+
+#SBATCH -t 16:00:00
+
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=8G
+
+#SBATCH --mail-user=dccollin@caltech.edu
+#SBATCH --mail-type=BEGIN
+#SBATCH --mail-type=END
+#SBATCH --mail-type=FAIL
+
+
+source /home/dccollin/mambaforge/bin/activate
+mamba init -q
+source ~/.bashrc
+mamba activate cs156
+
+python3 /home/dccollin/BbbBbbB/Resize_All.py
